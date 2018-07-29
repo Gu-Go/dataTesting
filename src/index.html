@@ -10,6 +10,62 @@
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/styles.css">
+		
+		        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+		<script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+				apiKey: "AIzaSyCNu9MRkv2IASuVAIa4LOsK9nBaQCEc5X4",
+				authDomain: "ellaelsaapp.firebaseapp.com",
+				databaseURL: "https://ellaelsaapp.firebaseio.com",
+				projectId: "ellaelsaapp",
+				storageBucket: "",
+				messagingSenderId: "346197094036"
+			};
+            firebase.initializeApp(config);
+
+            var contactInfo=firebase.database().ref("allaboutella-87e0e");
+            var submitContactInfo = function () {
+                var name = $("#inputName").val();
+                var email = $("#inputEmail").val();
+                var message = $("#inputeMessage").val();
+                // Push a new message to the database
+                contactInfo.push({
+                    "name": name,
+                    "email": email,
+                    "message": message
+                });
+            };
+
+            $(window).load(function () {
+                $("#contactForm").submit(submitContactInfo);
+            });
+
+        </script>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("myBtn").style.display = "block";
+                } else {
+                    document.getElementById("myBtn").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+                document.getElementsByClassName('lead')[0].style.color = "blue";
+                document.getElementsByClassName('lead')[0].style.fontSize = "3em";
+                document.getElementsByClassName('lead')[0].innerHTML = 'Thank you for visiting';
+            }
+        </script>
     </head>
 
     <body>
@@ -171,61 +227,5 @@
                 </footer>
             </div>  
         </div>
-        
-        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-		<script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDhPikYIxZkVP4tloHMPq_dvQHqcILn_iE",
-                authDomain: "allaboutella-87e0e.firebaseapp.com",
-                databaseURL: "https://allaboutella-87e0e.firebaseio.com",
-                projectId: "allaboutella-87e0e",
-                storageBucket: "allaboutella-87e0e.appspot.com",
-                messagingSenderId: "933596903227"
-            };
-            firebase.initializeApp(config);
-
-            var contactInfo=firebase.database().ref("allaboutella-87e0e");
-            var submitContactInfo = function () {
-                var name = $("#inputName").val();
-                var email = $("#inputEmail").val();
-                var message = $("#inputeMessage").val();
-                // Push a new message to the database
-                contactInfo.push({
-                    "name": name,
-                    "email": email,
-                    "message": message
-                });
-            };
-
-            $(window).load(function () {
-                $("#contactForm").submit(submitContactInfo);
-            });
-
-        </script>
-        <script>
-            // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function() {scrollFunction()};
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("myBtn").style.display = "block";
-                } else {
-                    document.getElementById("myBtn").style.display = "none";
-                }
-            }
-
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-                document.getElementsByClassName('lead')[0].style.color = "blue";
-                document.getElementsByClassName('lead')[0].style.fontSize = "3em";
-                document.getElementsByClassName('lead')[0].innerHTML = 'Thank you for visiting';
-            }
-        </script>
     </body>
 </html>
